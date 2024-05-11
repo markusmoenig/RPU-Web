@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ShaderMania - RPU. A GLSL-like language for rendering procedural content</title>
+    <link>http://localhost:1313/shadermania/index.html</link>
+    <description>Create, edit, share Metal shaders on macOS and iPadOS ShaderMania features live coding of Metal fragment shaders with realtime preview and playback. Shaders are displayed as nodes which can be connected as needed.&#xA;ShaderMania features a database of public shaders including tutorial shaders with links to explanation videos.&#xA;A physical keyboard is recommended for coding shaders.&#xA;Features&#xA;Flexible node system supporting Shaders and Images. Named input slots for shaders can be created inside the shader source code.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/shadermania/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shaders</title>
+      <link>http://localhost:1313/shadermania/shaders/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/shadermania/shaders/index.html</guid>
+      <description>/* * ShaderMania 1.5 * * Nodes are shaders or images. The currently selected node is rendered in the preview. You can easily change * which shader is rendered by just selecting it. The selection state is saved with the project. * * You can add nodes from existing shaders from the Shader Library by clicking on the shader and selecting &#34;Add to Project&#34;. * * For more information have a look at the Wiki at https://github.</description>
+    </item>
+  </channel>
+</rss>

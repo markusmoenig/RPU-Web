@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RPU: An Overview on RPU. A GLSL-like language for rendering procedural content</title>
+    <link>http://localhost:1313/index.html</link>
+    <description>Recent content in RPU: An Overview on RPU. A GLSL-like language for rendering procedural content</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>News</title>
+      <link>http://localhost:1313/news/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/news/index.html</guid>
+      <description>Initial Release (v0.3.0) - xx of May 2024 </description>
+    </item>
+    <item>
+      <title>Usage</title>
+      <link>http://localhost:1313/usage/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/usage/index.html</guid>
+      <description>From the Terminal RPU can be easily installed as a Rust subcommand.
+First, if you do not have already, install Rust and cargo on your system by following the easy steps here.
+After that you can install RPU by typing the following command in your terminal:
+cargo install rpuc This installs RPUC, the compiler and renderer front-end for RPU. You can now invoke rpuc in your terminal.
+If you want to update rpuc to the latest version just enter the above terminal command again.</description>
+    </item>
+    <item>
+      <title>Gallery</title>
+      <link>http://localhost:1313/gallery/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/gallery/index.html</guid>
+      <description>Coming soon</description>
+    </item>
+    <item>
+      <title>Language</title>
+      <link>http://localhost:1313/language/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/language/index.html</guid>
+      <description>RPU strives to be compatible with GLSL and has a few features that make it easier to write procedural graphics. The language is still in development and is subject to change.
+Current Limitations Only signed integers are supported at the moment, i.e. no unsigned integer types and their associated bit operations. As RPU has a rand() function which generates high quality random numbers on the Rust side, I do not see unsigned integers as a priority right now.</description>
+    </item>
+  </channel>
+</rss>

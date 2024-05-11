@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.125.7">
+    <meta name="generator" content="Relearn 5.16.0+tip">
+    <meta name="description" content="RPU. A GLSL-like language for rendering procedural content">
+    <meta name="author" content="Markus Moenig">
+    <title>RPU: An Overview - RPU. A GLSL-like language for rendering procedural content</title>
+    <link href="/index.xml" rel="alternate" type="application/rss+xml" title="RPU: An Overview - RPU. A GLSL-like language for rendering procedural content">
+    <link href="/index.search.js" rel="alternate" type="text/javascript" title="RPU: An Overview - RPU. A GLSL-like language for rendering procedural content">
+    <link href="/images/favicon.png?1715414379" rel="icon" type="image/png">
+    <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
+    <link href="/css/fontawesome-all.min.css?1715414379" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fontawesome-all.min.css?1715414379" rel="stylesheet"></noscript>
+    <link href="/css/nucleus.css?1715414379" rel="stylesheet">
+    <link href="/css/auto-complete.css?1715414379" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/auto-complete.css?1715414379" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar.min.css?1715414379" rel="stylesheet">
+    <link href="/css/fonts.css?1715414379" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fonts.css?1715414379" rel="stylesheet"></noscript>
+    <link href="/css/theme.css?1715414379" rel="stylesheet">
+    <link href="/css/theme-auto.css?1715414379" rel="stylesheet" id="variant-style">
+    <link href="/css/variant.css?1715414379" rel="stylesheet">
+    <link href="/css/print.css?1715414379" rel="stylesheet" media="print">
+    <link href="/css/ie.css?1715414379" rel="stylesheet">
+    <script src="/js/url.js?1715414379"></script>
+    <script src="/js/variant.js?1715414379"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      window.index_js_url="/index.search.js";
+      var root_url="/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      window.T_No_results_found = 'No results found for \u0022{0}\u0022';
+      window.T_N_results_found = '{1} results found for \u0022{0}\u0022';
+      // some further base stuff
+      var baseUriFull='http:\/\/localhost:1313/';
+      window.variants && variants.init( [ 'auto' ] );
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/index.html">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" class="topbar-link" title='Menu (CTRL+ALT+n)'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
+            <span class="links">
+              RPU: An Overview
+            </span>
+          </div>
+          <div class="default-animation progress">
+            <div class="toc-wrapper"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#current-limitations">Current Limitations</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+  </ul>
+</nav>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable home" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <article class="home deprecated">
+            <header class="headline">
+            </header>
+
+<p>RPU is a GLSL compatible programming language for rendering procedural graphics on the CPU.</p>
+<p>As GPU shaders can limit the complexity of what you can render, RPU aims to provide an alternative way of rendering complex, unlimited procedural graphics on the CPU, in 64-bit or 32-bit precision.</p>
+<p>RPU strives to be compabible with GLSL which means that you can easily port your existing shaders to RPU.</p>
+<p>Alternatively you can also use RPU as a general purpose mathematical scripting language, as it is designed to be fast and embeddable in your applications.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li>GLSL compatible</li>
+<li>64-bit or 32-bit precision (decide on compile time)</li>
+<li>Unlimited procedural graphics</li>
+<li>Easy to port existing shaders</li>
+<li>Fast and embeddable in your applications</li>
+<li>Run shaders in your terminal via rpuc (see <a href="./usage">Usage</a> for more info)</li>
+</ul>
+<p>RPU compiles to WebAssembly (WAT) and uses <a href="https://github.com/wasmerio/wasmer" target="_blank">wasmer</a> as a runtime. Which means RPU has near native speed, is hot-reloadable and can run on any platform that wasmer supports.</p>
+<p>For shaders it uses a multi-threaded tiled rendering approach, which splits the image into tiles and renders each tile in parallel.</p>
+<h2 id="current-limitations">Current Limitations</h2>
+<ul>
+<li>
+<p>Only signed integers are supported at the moment, i.e. no unsigned integer types and their associated bit operations. As RPU has a <code>rand()</code> function which generates high quality random numbers on the Rust side, I do not see unsigned integers as a priority right now.</p>
+</li>
+<li>
+<p>Function parameters do not support <code>in</code>, <code>out</code> or <code>inout</code> right now. Vectors and matrices are passed by value, structs are passed by reference. <strong>I will add support for inout parameters in the near future.</strong></p>
+</li>
+<li>
+<p>No textures yet, coming soon.</p>
+</li>
+<li>
+<p>No preprocessor yet, coming soon.</p>
+</li>
+</ul>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>
+<p>Create a fast and embeddable GLSL compatible language for procedural graphics</p>
+</li>
+<li>
+<p>Create a module system to easily import noise libraries, renderers, cameras etc (TBD)</p>
+</li>
+<li>
+<p>Mesh generation for 3D SDF maps (TBD)</p>
+</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<p>Use the <code>export</code> keyword to export the function you want to run. For example to run a fibonacci sequence:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fib(<span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> n;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> fib(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> fib(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export <span style="color:#66d9ef">int</span> main(<span style="color:#66d9ef">int</span> x) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> fib(x);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You could then run this with <code>rpuc --source fib.rpu -f main -a 42</code> to get the fibonacci sequence of 42 which takes around a second on my machine.</p>
+<p>Shaders have a signature of</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>export <span style="color:#66d9ef">vec4</span> shader(<span style="color:#66d9ef">vec2</span> coord, <span style="color:#66d9ef">vec2</span> resolution) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">vec4</span>(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// For an all white image</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You could run this via <code>rpuc --source myshader.rpu -f shader --write</code>.</p>
+<p>The resulting image will be saved by <em>rpuc</em> as <code>myshader.png</code>. The <code>--write</code> flag tells rpuc to write the image to disk every time a tile is completed. Giving a live preview of the rendering process.</p>
+<p>RPU assumes that your shader uses stochastic sampling for anti-aliasing. You can pass the <code>--iterations</code> flag to <em>rpuc</em> to specify the number of samples per pixel.</p>
+<p>A simple raymarching example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span><span style="color:#75715e">// Based on https://www.shadertoy.com/view/WtGXDD</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> sdBox(<span style="color:#66d9ef">vec3</span> p, <span style="color:#66d9ef">vec3</span> s) {
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> abs(p)<span style="color:#f92672">-</span>s;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> length(max(p, <span style="color:#ae81ff">0.</span>))<span style="color:#f92672">+</span>min(max(p.x, max(p.y, p.z)), <span style="color:#ae81ff">0.</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> GetDist(<span style="color:#66d9ef">vec3</span> p) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> d <span style="color:#f92672">=</span> sdBox(p, <span style="color:#66d9ef">vec3</span>(<span style="color:#ae81ff">.5</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> d;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">vec3</span> GetRayDir(<span style="color:#66d9ef">vec2</span> uv, <span style="color:#66d9ef">vec3</span> p, <span style="color:#66d9ef">vec3</span> l, <span style="color:#66d9ef">float</span> z) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> f <span style="color:#f92672">=</span> normalize(l<span style="color:#f92672">-</span>p);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> r <span style="color:#f92672">=</span> normalize(cross(<span style="color:#66d9ef">vec3</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>), f));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> u <span style="color:#f92672">=</span> cross(f,r);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> c <span style="color:#f92672">=</span> f<span style="color:#f92672">*</span>z;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> i <span style="color:#f92672">=</span> c <span style="color:#f92672">+</span> uv.x<span style="color:#f92672">*</span>r <span style="color:#f92672">+</span> uv.y<span style="color:#f92672">*</span>u;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> normalize(i);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">vec3</span> GetNormal(<span style="color:#66d9ef">vec3</span> p) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec2</span> e <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec2</span>(<span style="color:#ae81ff">0.001</span>, <span style="color:#ae81ff">0.</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> n <span style="color:#f92672">=</span> GetDist(p) <span style="color:#f92672">-</span> <span style="color:#66d9ef">vec3</span>(GetDist(p<span style="color:#f92672">-</span>e.xyy), GetDist(p<span style="color:#f92672">-</span>e.yxy), GetDist(p<span style="color:#f92672">-</span>e.yyx));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> normalize(n);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export <span style="color:#66d9ef">vec4</span> shader(<span style="color:#66d9ef">vec2</span> coord, <span style="color:#66d9ef">vec2</span> resolution) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Generate the uv with jittering for anti-aliasing</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec2</span> uv <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2.0</span> <span style="color:#f92672">*</span> (coord <span style="color:#f92672">+</span> <span style="color:#66d9ef">vec2</span>(rand(), rand())) <span style="color:#f92672">-</span> resolution.xy) <span style="color:#f92672">/</span> resolution.y;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> ro <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec3</span>(<span style="color:#ae81ff">.7</span>, <span style="color:#ae81ff">.8</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec3</span> rd <span style="color:#f92672">=</span> GetRayDir(uv, ro, <span style="color:#66d9ef">vec3</span>(<span style="color:#ae81ff">0</span>), <span style="color:#ae81ff">1.</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> max_t <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">vec4</span> col <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec4</span>(uv.x, uv.y, <span style="color:#ae81ff">0.</span>, <span style="color:#ae81ff">1.</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (t <span style="color:#f92672">&lt;</span> max_t) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">vec3</span> p <span style="color:#f92672">=</span> ro <span style="color:#f92672">+</span> rd <span style="color:#f92672">*</span> t;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> d <span style="color:#f92672">=</span> GetDist(p);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (abs(d) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.001</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">vec3</span> n <span style="color:#f92672">=</span> GetNormal(p);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float</span> dif <span style="color:#f92672">=</span> dot(n, normalize(<span style="color:#66d9ef">vec3</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>))) <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.5</span>;
+</span></span><span style="display:flex;"><span>            col.xyz <span style="color:#f92672">=</span> pow(<span style="color:#66d9ef">vec3</span>(dif), <span style="color:#ae81ff">.4545</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">+=</span> d;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> col;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Which generates 
+<a href="#image-2ed98930ad1e85612bfcb0acd2457077" class="lightbox-link">
+<img src="/raymarch.png" alt="Raymarch" style="height: auto; width: auto;" loading="lazy">
+</a>
+<a href="javascript:history.back();" class="lightbox" id="image-2ed98930ad1e85612bfcb0acd2457077">
+<img src="/raymarch.png" alt="Raymarch" class="lightbox-image" loading="lazy">
+</a></p>
+<h1 id="sponsors">Sponsors</h1>
+<p>None yet, but you can <a href="https://github.com/sponsors/markusmoenig/" target="_blank">sponsor me on GitHub</a>.</p>
+
+            <footer class="footline">
+
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <aside id="sidebar" class="default-animation">
+      <div id="header-wrapper" class="default-animation">
+        <div id="header" class="default-animation">
+<style>
+    #header {
+        background-color: #444;
+    }
+    #header-wrapper  {
+        background-color: #444;
+    }
+</style>
+<a href="/"><img src="/images/logo.png" alt="logo"></a>
+        </div>
+        <div class="searchbox default-animation">
+          <i class="fas fa-search" title="Search (CTRL+ALT+f)"></i>
+          <label class="a11y-only" for="search-by">Search</label>
+          <input data-search-input id="search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+          <span data-search-clear=""><i class="fas fa-times"></i></span>
+        </div>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/js/auto-complete.js?1715414379" defer></script>
+        <script src="/js/lunr/lunr.min.js?1715414379" defer></script>
+        <script src="/js/lunr/lunr.stemmer.support.min.js?1715414379" defer></script>
+        <script src="/js/lunr/lunr.multi.min.js?1715414379" defer></script>
+        <script src="/js/lunr/lunr.en.min.js?1715414379" defer></script>
+        <script src="/js/search.js?1715414379" defer></script>
+      </div>
+      <div id="content-wrapper" class="highlightable">
+        <ul class="topics enlarge morespace">
+          <li data-nav-id="/news/index.html" class=""><a class="padding" href="/news/index.html">News</a></li>
+          <li data-nav-id="/usage/index.html" class=""><a class="padding" href="/usage/index.html">Usage</a></li>
+          <li data-nav-id="/gallery/index.html" class=""><a class="padding" href="/gallery/index.html">Gallery</a></li>
+          <li data-nav-id="/language/index.html" class=""><a class="padding" href="/language/index.html">Language</a></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space">
+            <li><a class="padding" href="https://github.com/markusmoenig/RPU"><i class='fab fa-fw fa-github'></i> GitHub repo</a></li>
+            <li><a class="padding" href="https://discord.gg/BMStWPhByj"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li><a class="padding" href="https://twitter.com/MarkusMoenig"><i class='fab fa-fw fa-twitter'></i> Twitter</a></li>
+          </ul>
+        </div>
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter"></div>
+        <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter">
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+          <ul>
+            <li id="select-language-container" class="footerLangSwitch">
+              <div class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <label class="a11y-only" for="select-language">Language</label>
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                    <option lang="en" id="en" value="/index.html" selected></option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </div>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <div class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <label class="a11y-only" for="select-variant">Theme</label>
+                  <select id="select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                    <option id="auto" value="auto" selected>Auto</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </div>
+              <script>window.variants && variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks"><button class="padding" onclick="clearHistory();"><i class="fas fa-history fa-fw"></i><span>&nbsp;</span>Clear History</button></li>
+          </ul>
+        </div>
+        <div id="footer" class="footerFooter">
+        </div>
+      </div>
+    </aside>
+    <script src="/js/clipboard.min.js?1715414379" defer></script>
+    <script src="/js/perfect-scrollbar.min.js?1715414379" defer></script>
+    <script>
+      function useMathJax( config ){
+        if( !Object.assign ){
+          
+          return;
+        }
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          loader: {
+            load: ['[tex]/mhchem']
+          },
+          startup: {
+            elements: [
+              '.math'
+            ]
+          },
+          tex: {
+            inlineMath: [
+              ['$', '$'], 
+              ['\\(', '\\)']
+            ]
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="/js/d3/d3-color.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-dispatch.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-drag.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-ease.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-interpolate.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-selection.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-timer.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-transition.min.js?1715414379" defer></script>
+    <script src="/js/d3/d3-zoom.min.js?1715414379" defer></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js" defer></script>
+    <script>
+      window.themeUseMermaid = JSON.parse("{ \"theme\": \"default\" }");
+    </script>
+    <script src="/js/theme.js?1715414379" defer></script>
+  </body>
+</html>

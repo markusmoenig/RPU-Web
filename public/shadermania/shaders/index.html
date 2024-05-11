@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.125.7">
+    <meta name="generator" content="Relearn 6.0.0+tip">
+    <meta name="description" content="/* * ShaderMania 1.5 * * Nodes are shaders or images. The currently selected node is rendered in the preview. You can easily change * which shader is rendered by just selecting it. The selection state is saved with the project. * * You can add nodes from existing shaders from the Shader Library by clicking on the shader and selecting &#34;Add to Project&#34;. * * For more information have a look at the Wiki at https://github.">
+    <meta name="author" content="Markus Moenig">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Shaders - RPU. A GLSL-like language for rendering procedural content">
+    <meta name="twitter:description" content="/* * ShaderMania 1.5 * * Nodes are shaders or images. The currently selected node is rendered in the preview. You can easily change * which shader is rendered by just selecting it. The selection state is saved with the project. * * You can add nodes from existing shaders from the Shader Library by clicking on the shader and selecting &#34;Add to Project&#34;. * * For more information have a look at the Wiki at https://github.">
+    <meta property="og:url" content="http://localhost:1313/shadermania/shaders/index.html">
+    <meta property="og:site_name" content="RPU. A GLSL-like language for rendering procedural content">
+    <meta property="og:title" content="Shaders - RPU. A GLSL-like language for rendering procedural content">
+    <meta property="og:description" content="/* * ShaderMania 1.5 * * Nodes are shaders or images. The currently selected node is rendered in the preview. You can easily change * which shader is rendered by just selecting it. The selection state is saved with the project. * * You can add nodes from existing shaders from the Shader Library by clicking on the shader and selecting &#34;Add to Project&#34;. * * For more information have a look at the Wiki at https://github.">
+    <meta property="og:locale" content="en-us">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Shaders - RPU. A GLSL-like language for rendering procedural content">
+    <meta itemprop="description" content="/* * ShaderMania 1.5 * * Nodes are shaders or images. The currently selected node is rendered in the preview. You can easily change * which shader is rendered by just selecting it. The selection state is saved with the project. * * You can add nodes from existing shaders from the Shader Library by clicking on the shader and selecting &#34;Add to Project&#34;. * * For more information have a look at the Wiki at https://github.">
+    <meta itemprop="wordCount" content="250">
+    <title>Shaders - RPU. A GLSL-like language for rendering procedural content</title>
+    <link href="/shadermania/shaders/index.xml" rel="alternate" type="application/rss+xml" title="Shaders - RPU. A GLSL-like language for rendering procedural content">
+    <link href="/images/favicon.png?1715406696" rel="icon" type="image/png">
+    <link href="/css/fontawesome-all.min.css?1715406696" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fontawesome-all.min.css?1715406696" rel="stylesheet"></noscript>
+    <link href="/css/nucleus.css?1715406696" rel="stylesheet">
+    <link href="/css/auto-complete.css?1715406696" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/auto-complete.css?1715406696" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar.min.css?1715406696" rel="stylesheet">
+    <link href="/css/fonts.css?1715406696" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fonts.css?1715406696" rel="stylesheet"></noscript>
+    <link href="/css/theme.css?1715406696" rel="stylesheet">
+    <link href="/css/theme-auto.css?1715406696" rel="stylesheet" id="R-variant-style">
+    <link href="/css/chroma-auto.css?1715406696" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/css/variant.css?1715406696" rel="stylesheet">
+    <link href="/css/print.css?1715406696" rel="stylesheet" media="print">
+    <script src="/js/variant.js?1715406696"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.index_js_url="/index.search.js";
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/shadermania/shaders/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper"> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="topbar-breadcrumbs highlightable">
+            Shaders
+          </span>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable default" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <article class="default">
+            <header class="headline">
+            </header>
+
+<h1 id="shaders">Shaders</h1>
+
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * ShaderMania 1.5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Nodes are shaders or images. The currently selected node is rendered in the preview. You can easily change
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * which shader is rendered by just selecting it. The selection state is saved with the project.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * You can add nodes from existing shaders from the Shader Library by clicking on the shader and selecting &#34;Add to Project&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * For more information have a look at the Wiki at https://github.com/markusmoenig/ShaderMania/wiki
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Incoming Data structure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    float2              uv;         <span style="color:#75715e">// UV coordinate 0..1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    float2              viewSize;   <span style="color:#75715e">// Viewport size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    float2              fragCoord;  <span style="color:#75715e">// uv * viewSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span>               time;       <span style="color:#75715e">// Global time in seconds
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>        frame;      <span style="color:#75715e">// Frame number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    float4              outColor;   <span style="color:#75715e">// The resulting RGBA color, set to (0,0,0,1) by default
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    texture2d<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>    slot0;      <span style="color:#75715e">// The 4 texture input slots
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    texture2d<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>    slot1;
+</span></span><span style="display:flex;"><span>    texture2d<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>    slot2;
+</span></span><span style="display:flex;"><span>    texture2d<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>    slot3;
+</span></span><span style="display:flex;"><span>} Data;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Variables with UI parameters, parameter data is stored and reset when the parameter name changes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Up to 10 parameters per node / shader are supported
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Float slider parameter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> size <span style="color:#f92672">=</span> ParamFloat<span style="color:#f92672">&lt;</span>UI: <span style="color:#e6db74">&#34;Slider&#34;</span>, name: <span style="color:#e6db74">&#34;Parameter Name&#34;</span>, min: <span style="color:#ae81ff">0</span>, max: <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0.8</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Float3 color picker parameter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>float3 diskColor <span style="color:#f92672">=</span> ParamFloat3<span style="color:#f92672">&lt;</span>UI: <span style="color:#e6db74">&#34;Color&#34;</span>, name: <span style="color:#e6db74">&#34;Parameter Name&#34;</span>, <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">#</span>ffffff<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Url, ShaderMania will add https:// at the front automatically
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ParamUrl<span style="color:#f92672">&lt;</span>name: <span style="color:#e6db74">&#34;Watch Tutorial&#34;</span>, url: <span style="color:#e6db74">&#34;url without https://&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Input slots (up to 4 are supported per node)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>texture2d<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span> input <span style="color:#f92672">=</span> ParamInput<span style="color:#f92672">&lt;</span>name: <span style="color:#e6db74">&#34;Input Slot Name&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// To read from input slots
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">getLinearSample</span>(texture2d<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>, float2 coord);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">getNearestSample</span>(texture2d<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span>, float2 coord);</span></span></code></pre></div>
+            <footer class="footline">
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<style>
+    #header {
+        background-color: #444;
+    }
+    #header-wrapper  {
+        background-color: #444;
+    }
+</style>
+<a href="/"><img src="/images/logo.png" alt="logo"></a>
+        </div>
+
+        <search>
+          <div class="searchbox default-animation">
+            <i class="fas fa-search" title="Search (CTRL+ALT+f)"></i>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/js/auto-complete.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.min.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.stemmer.support.min.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.multi.min.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.en.min.js?1715406696" defer></script>
+        <script src="/js/search.js?1715406696" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation">
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-topics">
+          <ul class="enlarge morespace collapsible-menu">
+          <li data-nav-id="/whatsnew/index.html" class="alwaysopen"><a class="padding" href="/whatsnew/index.html">Whats New</a><ul id="R-subsections-fc92e2a3fb580c3b8ac9959eddbf4e8a" class="morespace collapsible-menu">
+          <li data-nav-id="/whatsnew/private/index.html" class=""><a class="padding" href="/whatsnew/private/index.html">Personal Info</a></li></ul></li>
+          <li data-nav-id="/usage/index.html" class=""><a class="padding" href="/usage/index.html">USAGE</a></li>
+          <li data-nav-id="/shadermania/index.html" class="parent alwaysopen"><a class="padding" href="/shadermania/index.html">ShaderMania</a><ul id="R-subsections-4078c2750936b87f2f4eceac753f4962" class="morespace collapsible-menu">
+          <li data-nav-id="/shadermania/shaders/index.html" class="active"><a class="padding" href="/shadermania/shaders/index.html">Shaders</a></li></ul></li>
+          </ul>
+        </div>
+        <div id="R-shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space">
+            <li><a class="padding" href="https://github.com/markusmoenig/RPU"><i class='fab fa-fw fa-patreon'></i> GitHub repo</a></li>
+            <li><a class="padding" href="https://discord.gg/BMStWPhByj"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li><a class="padding" href="https://twitter.com/MarkusMoenig"><i class='fab fa-fw fa-twitter'></i> Twitter</a></li>
+          </ul>
+        </div>
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/shadermania/shaders/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter">
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/js/clipboard.min.js?1715406696" defer></script>
+    <script src="/js/perfect-scrollbar.min.js?1715406696" defer></script>
+    <script>
+      function useMathJax( config ){
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          tex: {
+            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="/js/d3/d3-color.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-dispatch.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-drag.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-ease.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-interpolate.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-selection.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-timer.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-transition.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-zoom.min.js?1715406696" defer></script>
+    <script src="/js/js-yaml.min.js?1715406696" defer></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js" defer></script>
+    <script>
+      window.themeUseMermaid = JSON.parse("{ \"theme\": \"default\" }");
+    </script>
+    <script src="/js/theme.js?1715406696" defer></script>
+  </body>
+</html>

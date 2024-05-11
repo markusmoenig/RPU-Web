@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.125.7">
+    <meta name="generator" content="Relearn 6.0.0+tip">
+    <meta name="description" content="Create, edit, share Metal shaders on macOS and iPadOS ShaderMania features live coding of Metal fragment shaders with realtime preview and playback. Shaders are displayed as nodes which can be connected as needed.
+ShaderMania features a database of public shaders including tutorial shaders with links to explanation videos.
+A physical keyboard is recommended for coding shaders.
+Features
+Flexible node system supporting Shaders and Images. Named input slots for shaders can be created inside the shader source code.">
+    <meta name="author" content="Markus Moenig">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ShaderMania - RPU. A GLSL-like language for rendering procedural content">
+    <meta name="twitter:description" content="Create, edit, share Metal shaders on macOS and iPadOS ShaderMania features live coding of Metal fragment shaders with realtime preview and playback. Shaders are displayed as nodes which can be connected as needed.
+ShaderMania features a database of public shaders including tutorial shaders with links to explanation videos.
+A physical keyboard is recommended for coding shaders.
+Features
+Flexible node system supporting Shaders and Images. Named input slots for shaders can be created inside the shader source code.">
+    <meta property="og:url" content="http://localhost:1313/shadermania/index.html">
+    <meta property="og:site_name" content="RPU. A GLSL-like language for rendering procedural content">
+    <meta property="og:title" content="ShaderMania - RPU. A GLSL-like language for rendering procedural content">
+    <meta property="og:description" content="Create, edit, share Metal shaders on macOS and iPadOS ShaderMania features live coding of Metal fragment shaders with realtime preview and playback. Shaders are displayed as nodes which can be connected as needed.
+ShaderMania features a database of public shaders including tutorial shaders with links to explanation videos.
+A physical keyboard is recommended for coding shaders.
+Features
+Flexible node system supporting Shaders and Images. Named input slots for shaders can be created inside the shader source code.">
+    <meta property="og:locale" content="en-us">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="ShaderMania - RPU. A GLSL-like language for rendering procedural content">
+    <meta itemprop="description" content="Create, edit, share Metal shaders on macOS and iPadOS ShaderMania features live coding of Metal fragment shaders with realtime preview and playback. Shaders are displayed as nodes which can be connected as needed.
+ShaderMania features a database of public shaders including tutorial shaders with links to explanation videos.
+A physical keyboard is recommended for coding shaders.
+Features
+Flexible node system supporting Shaders and Images. Named input slots for shaders can be created inside the shader source code.">
+    <meta itemprop="wordCount" content="246">
+    <title>ShaderMania - RPU. A GLSL-like language for rendering procedural content</title>
+    <link href="/shadermania/index.xml" rel="alternate" type="application/rss+xml" title="ShaderMania - RPU. A GLSL-like language for rendering procedural content">
+    <link href="/images/favicon.png?1715406696" rel="icon" type="image/png">
+    <link href="/css/fontawesome-all.min.css?1715406696" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fontawesome-all.min.css?1715406696" rel="stylesheet"></noscript>
+    <link href="/css/nucleus.css?1715406696" rel="stylesheet">
+    <link href="/css/auto-complete.css?1715406696" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/auto-complete.css?1715406696" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar.min.css?1715406696" rel="stylesheet">
+    <link href="/css/fonts.css?1715406696" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fonts.css?1715406696" rel="stylesheet"></noscript>
+    <link href="/css/theme.css?1715406696" rel="stylesheet">
+    <link href="/css/theme-auto.css?1715406696" rel="stylesheet" id="R-variant-style">
+    <link href="/css/chroma-auto.css?1715406696" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/css/variant.css?1715406696" rel="stylesheet">
+    <link href="/css/print.css?1715406696" rel="stylesheet" media="print">
+    <script src="/js/variant.js?1715406696"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.index_js_url="/index.search.js";
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/shadermania/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper"><nav class="TableOfContents">
+  <ul>
+    <li><a href="#create-edit-share-metal-shaders-on-macos-and-ipados">Create, edit, share Metal shaders on macOS and iPadOS</a></li>
+    <li><a href="#how-to-help">How to help</a></li>
+    <li><a href="#render-z">Render-Z</a></li>
+    <li><a href="#get-involved">Get Involved</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="topbar-breadcrumbs highlightable">
+            ShaderMania
+          </span>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable default" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <article class="default">
+            <header class="headline">
+            </header>
+
+<h1 id="shadermania">ShaderMania</h1>
+
+<p><a href="https://apps.apple.com/us/app/shadermania/id1541065830" rel="external" target="_blank"><a href="#R-image-c2a326b8eb8b2100543ec1ef59a3cb15" class="lightbox-link"><img alt="AppStore" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/shadermania/appstore.svg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c2a326b8eb8b2100543ec1ef59a3cb15"><img alt="AppStore" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/shadermania/appstore.svg"></a></a></p>
+<p><a href="#R-image-eb8c00fe797006cd216759066c6cd4af" class="lightbox-link"><img alt="screenshot" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/shadermania/screen.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-eb8c00fe797006cd216759066c6cd4af"><img alt="screenshot" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/shadermania/screen.png"></a></p>
+<h2 id="create-edit-share-metal-shaders-on-macos-and-ipados">Create, edit, share Metal shaders on macOS and iPadOS</h2>
+<p>ShaderMania features live coding of Metal fragment shaders with realtime preview and playback. Shaders are displayed as nodes which can be connected as needed.</p>
+<p>ShaderMania features a database of public shaders including tutorial shaders with links to explanation videos.</p>
+<p>A physical keyboard is recommended for coding shaders.</p>
+<p>Features</p>
+<ul>
+<li>Flexible node system supporting Shaders and Images. Named input slots for shaders can be created inside the shader source code.</li>
+<li>Connect shader nodes to be able to chain shaders.</li>
+<li>Optional abstracted parameter definition which supports display of variables as sliders to live change shader values in the user interface.</li>
+<li>Tutorial shaders can display a button with a link to their video urls.</li>
+<li>Realtime syntax check and compilation of your shaders with realtime preview.</li>
+<li>Render to custom resolutions and export your shader output to PNG.</li>
+<li>Display of syntax errors and warnings.</li>
+</ul>
+<p>Database</p>
+<ul>
+<li>Upload your shaders to the public shader database</li>
+<li>Browse shaders in the Database and learn / experiment.</li>
+<li>Add the shader nodes from the database to your project.</li>
+</ul>
+<h2 id="how-to-help">How to help</h2>
+<p>Rating or reviewing ShaderMania in the AppStore is a great help as it improves visibility.</p>
+<h2 id="render-z">Render-Z</h2>
+<p>If you like ShaderMania, try out <a href="https://github.com/markusmoenig/Render-Z" rel="external" target="_blank">Render-Z</a>, my visual Metal editor.</p>
+<h2 id="get-involved">Get Involved</h2>
+<p>Join my <a href="https://discord.gg/BMStWPhByj" rel="external" target="_blank">Discord</a> and get involved in everything ShaderMania.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li>Thanks to <a href="https://www.youtube.com/channel/UCcAlTqd9zID6aNX3TzwxJXg" rel="external" target="_blank">The Art of Code</a> for allowing me to use his tutorial shaders.</li>
+<li>Thanks to <a href="https://www.shadertoy.com/user/Kali" rel="external" target="_blank">Kali</a> for allowing me to use his <a href="https://www.shadertoy.com/view/XsBXWt" rel="external" target="_blank">Fractal Land</a> shader for the app.</li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<style>
+    #header {
+        background-color: #444;
+    }
+    #header-wrapper  {
+        background-color: #444;
+    }
+</style>
+<a href="/"><img src="/images/logo.png" alt="logo"></a>
+        </div>
+
+        <search>
+          <div class="searchbox default-animation">
+            <i class="fas fa-search" title="Search (CTRL+ALT+f)"></i>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/js/auto-complete.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.min.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.stemmer.support.min.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.multi.min.js?1715406696" defer></script>
+        <script src="/js/lunr/lunr.en.min.js?1715406696" defer></script>
+        <script src="/js/search.js?1715406696" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation">
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-topics">
+          <ul class="enlarge morespace collapsible-menu">
+          <li data-nav-id="/whatsnew/index.html" class="alwaysopen"><a class="padding" href="/whatsnew/index.html">Whats New</a><ul id="R-subsections-fc92e2a3fb580c3b8ac9959eddbf4e8a" class="morespace collapsible-menu">
+          <li data-nav-id="/whatsnew/private/index.html" class=""><a class="padding" href="/whatsnew/private/index.html">Personal Info</a></li></ul></li>
+          <li data-nav-id="/usage/index.html" class=""><a class="padding" href="/usage/index.html">USAGE</a></li>
+          <li data-nav-id="/shadermania/index.html" class="active parent alwaysopen"><a class="padding" href="/shadermania/index.html">ShaderMania</a><ul id="R-subsections-4078c2750936b87f2f4eceac753f4962" class="morespace collapsible-menu">
+          <li data-nav-id="/shadermania/shaders/index.html" class=""><a class="padding" href="/shadermania/shaders/index.html">Shaders</a></li></ul></li>
+          </ul>
+        </div>
+        <div id="R-shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space">
+            <li><a class="padding" href="https://github.com/markusmoenig/RPU"><i class='fab fa-fw fa-patreon'></i> GitHub repo</a></li>
+            <li><a class="padding" href="https://discord.gg/BMStWPhByj"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li><a class="padding" href="https://twitter.com/MarkusMoenig"><i class='fab fa-fw fa-twitter'></i> Twitter</a></li>
+          </ul>
+        </div>
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/shadermania/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter">
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/js/clipboard.min.js?1715406696" defer></script>
+    <script src="/js/perfect-scrollbar.min.js?1715406696" defer></script>
+    <script>
+      function useMathJax( config ){
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          tex: {
+            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="/js/d3/d3-color.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-dispatch.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-drag.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-ease.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-interpolate.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-selection.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-timer.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-transition.min.js?1715406696" defer></script>
+    <script src="/js/d3/d3-zoom.min.js?1715406696" defer></script>
+    <script src="/js/js-yaml.min.js?1715406696" defer></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js" defer></script>
+    <script>
+      window.themeUseMermaid = JSON.parse("{ \"theme\": \"default\" }");
+    </script>
+    <script src="/js/theme.js?1715406696" defer></script>
+  </body>
+</html>

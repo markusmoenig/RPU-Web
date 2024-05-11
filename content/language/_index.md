@@ -11,6 +11,8 @@ RPU strives to be compatible with GLSL and has a few features that make it easie
 
 - Function parameters do not support `in`, `out` or `inout` right now. Vectors and matrices are passed by value, structs are passed by reference. **I will add support for inout parameters in the near future.**
 
+- Arguments to vector based functions can only be scalars at the moment. For example `mix(vec3(0), vec3(1), 0.5)` works fine, but `mix(vec3(0), vec3(1), vec3(0.5))` does not.
+
 - No textures yet, coming soon.
 
 - No preprocessor yet, coming soon.
@@ -23,7 +25,7 @@ RPU has a `rand()` function which generates high quality random numbers in [0.0.
 `vec3(rand())` will generate a vector with a unique random number for each component.
 {{% /notice %}}
 
-# Currently implemented
+## Currently implemented
 
 - **Basic types**: int, ivec2, ivec3, ivec4, float, vec2, vec3, vec4, mat2, mat3, mat4 and custom structs
 - **Math operators**: +, -, \*, /
@@ -31,3 +33,11 @@ RPU has a `rand()` function which generates high quality random numbers in [0.0.
 - **Control structures**: if, else, ternary (?:), while, break, return, const, export
 - **Assignment**: =, +=, -=, \*=, /=
 - **Swizzles**: vec2.xy, vec3.xyz, vec4.xyzw etc
+
+## Implementation Notes
+
+All vector based operations (length, dot, cross etc) are implemented in pure WebAssembly. Trigonometric functions (which are not natively supported in WA) are implemented in Rust and are called via the wasmer runtime.
+
+I got a bit lazy at the end and implemented some functions in Rust that could be implemented in WebAssembly (for example _sign_ and _clamp_). I will move them to WebAssembly in the future.
+
+Vectors and matrices are passed by value, structs are passed by reference. This means that if you pass a struct to a function, the function can modify the original struct. I will make this more robust when working on in / inout / out arguments.

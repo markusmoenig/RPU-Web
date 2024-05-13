@@ -13,9 +13,9 @@ RPU strives to be compatible with GLSL and has a few features that make it easie
 
 - Arguments to vector based functions can only be scalars at the moment. For example `mix(vec3(0), vec3(1), 0.5)` works fine, but `mix(vec3(0), vec3(1), vec3(0.5))` does not.
 
-- No textures yet, coming soon.
+- Basic preprocessor which currency only supports `#define`.
 
-- No preprocessor yet, coming soon.
+- No textures yet, coming soon.
 
 ## Additional Features
 
@@ -29,12 +29,13 @@ RPU has a `rand()` function which generates high quality random numbers in [0.0.
 
 - **Basic types**: int, ivec2, ivec3, ivec4, float, vec2, vec3, vec4, mat2, mat3, mat4 and custom structs
 - **Math operators**: +, -, \*, /
-- **Math functions**: dot, cross, mix, smoothstep, length, normalize, sin, cos, sqrt, ceil, floor, fract, abs, tan, degrees, radians, min, max, pow, rand, clamp, sign
-- **Control structures**: if, else, ternary (?:), while, break, return, const, export
+- **Math functions**: dot, cross, mix, smoothstep, length, normalize, sin, cos, sqrt, ceil, floor, fract, abs, tan, atan, degrees, radians, min, max, pow, rand, clamp, sign, mod, step, exp, log
+- **Control structures**: if, else, ternary (?:), while, for, break, return, const, export
 - **Assignment**: =, +=, -=, \*=, /=
 - **Swizzles**: vec2.xy, vec3.xyz, vec4.xyzw etc
+- **Comments**: `//` and `/* */`
 
-## Implementation Notes
+## Implementation notes
 
 All vector based operations (length, dot, cross etc) are implemented in pure WebAssembly. Trigonometric functions (which are not natively supported in WA) are implemented in Rust and are called via the wasmer runtime.
 

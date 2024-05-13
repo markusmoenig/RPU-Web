@@ -1,6 +1,6 @@
 baseURL = 'https://rpu-lang.org'
 languageCode = 'en-us'
-title = "RPU. A GLSL-like language for rendering procedural content"
+title = "RPU. A GLSL-like language for rendering procedural content on the CPU."
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-relearn"
@@ -48,8 +48,7 @@ alwaysopen = true
 # Prefix URL to edit current page. Will display an "Edit" button on top right hand corner of every page.
 # Useful to give opportunity to people to create merge request for your doc.
 # See the config.toml file from this documentation site to have an example.
-editURL = ""
-description = "RPU. A GLSL-like language for rendering procedural content"
+description = "RPU is a GLSL-like language for rendering procedural content on the CPU."
 # Shows a checkmark for visited pages on the menu
 showVisitedLinks = false
 # Disable search function. It will hide search bar
@@ -91,6 +90,7 @@ disableMermaid = false
 customMermaidURL = "https://unpkg.com/mermaid/dist/mermaid.min.js"
 # Initialization parameter for Mermaid, see Mermaid documentation
 mermaidInitialize = "{ \"theme\": \"default\" }"
+editURL = ""
 # Author of the site, will be used in meta information
 author = "Markus Moenig"
 # Description of the site, will be used in meta information

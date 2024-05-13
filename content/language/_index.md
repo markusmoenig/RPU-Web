@@ -13,7 +13,7 @@ RPU strives to be compatible with GLSL and has a few features that make it easie
 
 - Arguments to vector based functions can only be scalars at the moment. For example `mix(vec3(0), vec3(1), 0.5)` works fine, but `mix(vec3(0), vec3(1), vec3(0.5))` does not.
 
-- Basic preprocessor which currency only supports `#define`.
+- Basic preprocessor which currently only supports `#define`.
 
 - No textures yet, coming soon.
 

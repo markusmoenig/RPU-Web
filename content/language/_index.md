@@ -17,6 +17,8 @@ RPU strives to be compatible with GLSL and has a few features that make it easie
 
 - No textures yet, coming soon.
 
+-- No `++` or `--` operators yet, coming soon. Use `+=` or `-=` in the meantime.
+
 ## Additional Features
 
 RPU has a `rand()` function which generates high quality random numbers in [0.0..1.0].

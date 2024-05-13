@@ -31,9 +31,9 @@ For shaders it uses a multi-threaded tiled rendering approach, which splits the 
 
 - Function parameters do not support `in`, `out` or `inout` right now. Vectors and matrices are passed by value, structs are passed by reference. **I will add support for inout parameters in the near future.**
 
-- No textures yet, coming soon.
+- Basic preprocessor which currently only supports `#define`.
 
-- No preprocessor yet, coming soon.
+- No textures yet, coming soon.
 
 ## Goals
 
